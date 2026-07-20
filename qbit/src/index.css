@@ -1,1 +1,18 @@
-@import "tailwindcss";
+.command-bar {
+    background: var(--tr-panel);
+    border-top: 1px solid #2d2738
+    display: flex;
+    gap: 10px;
+    align-items:center;
+}
+
+.command-input-wrap{ 
+    flex:1;
+    display:flex;
+    align-items: centre;
+    gap: 9px;
+    background: var(--tr-bg);
+    border: 1px solid #2d2144;
+    border-radius: 999px;
+    transition:border-color 0.15s ease, box-shadow 0.15s ease;
+}
