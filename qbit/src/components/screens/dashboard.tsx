@@ -1,8 +1,5 @@
-interface DashboardProps {
-    onOpenProject: (projectId: string) => void;
-}
 
-export default function Dashboard({ onOpenProject}: {onOpenProject: (projectId: string) ==> void}){
+export default function Dashboard({ onOpenProject}: {onOpenProject: (projectId: string) => void}){
     return (
         <div className= "screen-enter">
             <h1 className="hub-page-title">Your projects</h1>
@@ -26,9 +23,23 @@ export default function Dashboard({ onOpenProject}: {onOpenProject: (projectId: 
             ))}
             </div>
 
-                    
-                
-
-                            
+            <div className= "dashboard-widgets">
+                <div className="widget-card">
+                    <h4>Open across workspace</h4>
+                    <div className="widget-stat">{PROJECTS.reduce((n,p) => n + p.tickets.lenght,0)}</div>
+                    <div className="widget-stat-label"> across 2 projects</div>
+                </div>
+                <div className="widget-card">
+                    <h4> Due this sprint</h4>
+                    <div className="widget-stat">7</div>
+                    <div className="widget-stat-label"> across 2 projects</div> 
+                </div>
+                <div className="widget-card">
+                    <h4>Unread mentions</h4>
+                    <div className="widget-stat">12</div>
+                    <div className="widget-stat-label"> in comments &amp; reviews</div>
+                </div>
             </div>
         </div>
+    );
+}
