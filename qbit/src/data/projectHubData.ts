@@ -1,6 +1,23 @@
-import type { Project } from "./types";
+export type Status = 'backlog' | 'To Do' | 'In Progress' | 'In review' | 'Done';
+export interface Ticket {
+  id: number;
+  title: string;
+  status :Status;
+  priority: string;
+  assignee: string;
+  labels: string[];
+  description: string;
+  comments: string[];
+}
+export interface Project {
+  id: string;
+  name: string;
+  key: string; 
+  color: string;
+  tickets: Ticket[];
+}
 
-export const PROJECTS: Project[] = [
+export const projects:
   {
     id: "saumya",
     name: "Saumya Platform",

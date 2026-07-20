@@ -74,4 +74,30 @@ function ProjectPage ({ projects, openTicket}:{project: Project;openTicket: (tic
   return <>
   <he2>{project.name}</he2>
   <p className="muted">{project.key} . {project.tickets.lenght} tickets</p></p></>
-}})
+  <div className="table">{projects.tickets.map(ticket=>
+    <button className="row" key={ticket.id}
+    onClick={()=> openTicket(ticket)}>
+    <code>{projects.key}-{ticket.id}</code>
+    <strong>{ticket.title}</strong>
+    <Badge value= {ticket.status}/><Badge vlaue={ticket.priority}/>
+    </button>)}
+  </div></>;
+  }
+
+  function TicketPage({project, ticket}: {project: Project; ticket: Ticket}) {
+    return <article>
+    <code> {project.key}-{ticket.id}</code>
+    <h2> {ticket.title}</h2>
+    <p>{ticket.description}</p>
+    <div className="facts"><Badge value={ticket.status}/>
+    <Badge value={ticket.priority} />
+    <span>{ticket.assignee}</span>
+    </div>
+    <h3>Labels</h3>
+    <p>{ticket.labels.map(label=><Badge key={label} value={label}/>)}</p>
+    <h3>Comments</h3> {ticket.comments.lengh?}
+      <ul> {ticket.comments.map((comment, i)=><li key={1}>{comment}</li>)}:<p className="muted"> No comments yet.</p>
+  </article>;
+  }
+
+  function Badge ({value}: {value:string}){return<span className="badge">{value}</span>; }
