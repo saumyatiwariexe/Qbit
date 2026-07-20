@@ -22,14 +22,30 @@ export default function ProjectView({ projectId, tab, onChangeTab, onOpenTicket}
         setFilters((f) => ({ ...f, [key]}));
     }
 
-    return (
-        <div className="Screen-enter">
-            <h1 className="hub-page-title">{project.name}</h1>
-            <p className="hub-page-sub">{project.key} workspace {<project.tickets.length} tickets led by {project.lead}</p>
-            
-            <div clsssName="hub-tabs">
-            {TABS.map((t) => (
-                <button key={t} className={'hub-tab ${tab === t? 'is-active' :''}`} onClick={(=> onChangeTab(t}>
-            )
-                </div>
-    }
+return (
+  <div className="Screen-enter">
+    <h1 className="hub-page-title">{project.name}</h1>
+
+    <p className="hub-page-sub">
+      {project.key} workspace · {project.tickets.length} tickets led by {project.lead}
+    </p>
+
+    <div className="hub-tabs">
+      {TABS.map((t) => (
+        <button
+          key={t}
+          className={`hub-tab ${tab === t ? "is-active" : ""}`}
+          onClick={() => onChangeTab(t)}
+        >
+          {t}
+        </button>
+      ))}
+    </div>
+
+    {tab === 'List' && (
+        <>
+            <div className="filter-bar">
+                <filterchip label="Assignee" active
+
+  </div>
+);
